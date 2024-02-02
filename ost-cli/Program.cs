@@ -48,7 +48,7 @@ public static class Program
                 case ConsoleKey.Enter:
                     break;
                 case ConsoleKey.Pause:
-                    break;
+                    client?.Stop(); break;
                 case ConsoleKey.Escape:
                     break;
                 case ConsoleKey.Spacebar:
@@ -62,13 +62,13 @@ public static class Program
                 case ConsoleKey.Home:
                     break;
                 case ConsoleKey.LeftArrow:
-                    break;
+                    client?.PrevSong(); break;
                 case ConsoleKey.UpArrow:
-                    break;
+                    client?.SetVolume(Math.Clamp(client.GetVolume() + 0.1f, 0f, 1f)); break;
                 case ConsoleKey.RightArrow:
-                    break;
+                    client?.NextSong(); break;
                 case ConsoleKey.DownArrow:
-                    break;
+                    client?.SetVolume(Math.Clamp(client.GetVolume() - 0.1f, 0f, 1f)); break;
                 case ConsoleKey.Select:
                     break;
                 case ConsoleKey.Print:
@@ -324,7 +324,7 @@ public static class Program
                 case ConsoleKey.EraseEndOfFile:
                     break;
                 case ConsoleKey.Play:
-                    break;
+                    client?.Play(); break;
                 case ConsoleKey.Zoom:
                     break;
                 case ConsoleKey.NoName:

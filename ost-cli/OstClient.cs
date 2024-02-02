@@ -8,6 +8,7 @@ internal class OstClient
     private readonly MediaInfoService.MediaInfoServiceClient _mediaInfoClient;
     private readonly OstUpdateService.OstUpdateServiceClient _ostUpdateClient;
     private static bool _inputtingCommand;
+    private static float _currentVolume;
 
     public OstClient(string host, int port)
     {
@@ -46,6 +47,7 @@ internal class OstClient
                 var currentTime = update.TotalTime * update.CurrentProgress;
                 var currentTimeText = TimeSpan.FromSeconds(currentTime).ToString("mm\\:ss");
                 var totalTimeText = TimeSpan.FromSeconds(update.TotalTime).ToString("mm\\:ss");
+                _currentVolume = update.Volume;
                 Console.Write($"\rPlaying: {update.SongInfo.Title} - {currentTimeText}/{totalTimeText}");
             }
         }
@@ -120,5 +122,10 @@ internal class OstClient
     public static void SetInputtingCommand(bool b)
     {
         _inputtingCommand = b;
+    }
+
+    public float GetVolume()
+    {
+        return _currentVolume;
     }
 }
