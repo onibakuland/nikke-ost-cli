@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ost-cli", "ost-cli\ost-cli.csproj", "{8E668007-B944-4B68-88FB-4E9C0E3B6F09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E668007-B944-4B68-88FB-4E9C0E3B6F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E668007-B944-4B68-88FB-4E9C0E3B6F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E668007-B944-4B68-88FB-4E9C0E3B6F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E668007-B944-4B68-88FB-4E9C0E3B6F09}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
