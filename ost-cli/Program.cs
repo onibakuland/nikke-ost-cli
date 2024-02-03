@@ -1,4 +1,7 @@
 ﻿using System.CommandLine;
+using ost_cli.Dbus.Impl;
+using X11;
+
 
 namespace ost_cli;
 
@@ -24,9 +27,10 @@ public static class Program
         rootCommand.SetHandler((host, port) =>
         {
             Console.WriteLine($"Starting ost-we cli grpc client with Host: {host} Port: {port}");
+            MediaKeysDbusImpl.Initialize();
             StartInteractiveCLI( new OstClient(host, port));
         }, hostOption, portOption);
-
+        
         return rootCommand.InvokeAsync(args);
     }
     
@@ -35,6 +39,8 @@ public static class Program
         client?.SubscribeToUpdates();
         while (true)
         {
+            MediaKeysDbusImpl.CheckXEvent();
+
             if (!Console.KeyAvailable) continue;
             var key = Console.ReadKey(intercept: true).Key;
             switch (key)
@@ -48,7 +54,7 @@ public static class Program
                 case ConsoleKey.Enter:
                     break;
                 case ConsoleKey.Pause:
-                    client?.Stop(); break;
+                    break;
                 case ConsoleKey.Escape:
                     break;
                 case ConsoleKey.Spacebar:
@@ -324,7 +330,7 @@ public static class Program
                 case ConsoleKey.EraseEndOfFile:
                     break;
                 case ConsoleKey.Play:
-                    client?.Play(); break;
+                    break;
                 case ConsoleKey.Zoom:
                     break;
                 case ConsoleKey.NoName:
@@ -397,4 +403,8 @@ public static class Program
         }
         OstClient.SetInputtingCommand(false);
     }
+    
+    
+
 }
+
